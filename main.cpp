@@ -66,9 +66,7 @@ vector<string> split(string st, string slash)
     res.push_back(st);
     return res;
 }
-
 //------------------------------- Command Mode Functionalities ----------------------------\]
-
 string absolute_path(string path)
 {
     string pwd = cur_direc;
@@ -115,7 +113,6 @@ mode_t check_mode(string path)
 
     return mode;
 }
-
 void fcopy(string source, string dest)
 {
     mode_t mode = check_mode(source);
@@ -190,7 +187,10 @@ void copy_file(vector<string> str)
     }
     else
     {
+        // for(int i=0; i<str.size(); i++)
+        //     cout << str[i] << " ";
         string dest = absolute_path(str[str.size()-1]);
+        // cout << "Destination Path = " << dest << "\n";
         int i;
         if(!(check_dir(dest)))
         {
@@ -203,8 +203,10 @@ void copy_file(vector<string> str)
             for(i=1; i<str.size()-1; i++)
             {
                 string source = absolute_path(str[i]);
+                cout << "Source = " << source << "\n";
                 vector<string> source_files = split(str[i], "/");
-                string destination = dest + "/" + source_files[source_files.size()-1];   
+                string destination = dest + "/" + source_files[source_files.size()-1];  
+                cout << "Final Destination -> " << destination << "\n";
                 if(check_dir(source))
                 {
                     mode_t mode = check_mode(source);
@@ -224,7 +226,6 @@ void copy_file(vector<string> str)
     }
     return;
 }
-
 void search_file(string cd, vector<string> str)
 {
     if(str.size() != 2){
@@ -481,18 +482,18 @@ void delete_directory(vector<string> str)
     }
     return;
 }
-
 //--------------------------------- Enable Non-Canonical Mode ------------------------------\]
-
 struct termios original;
 void die(const char *s) 
 {
     write(STDOUT_FILENO, "\x1b[2J", 4);
     write(STDOUT_FILENO, "\x1b[H", 3);
     perror(s);
-            // perror() looks at the global errno variable and prints a descriptive error message for it. It also prints the string given to it before it prints the error message, which is meant to provide context about what part of your code caused the error.
+            // perror() looks at the global errno variable and prints a descriptive error message for it. 
+            //It also prints the string given to it before it prints the error message, which is meant to provide context about what part of your code caused the error.
     exit(1);
-            // After printing out the error message, we exit the program with an exit status of 1, which indicates failure (as would any non-zero value).
+            // After printing out the error message, we exit the program with an exit status of 1,
+            // which indicates failure (as would any non-zero value).
 }
 void disable_non_canonical_mode()
 {
@@ -511,9 +512,7 @@ void enable_non_canonical_mode()
     if ( tcsetattr(STDIN_FILENO, TCSAFLUSH, &raw) )
         die("tcsetattr");
 }
-
 //--------------------------------------- Normal Mode ----------------------------------------\]
-
 void displayParent_dir(const char* st1, string list, int size)
 {
     string current_dir="";
@@ -542,6 +541,8 @@ void normal_mode(const char* st1, vector<char*> v, int size)
     int a = min(MAX,n);
     aa = a;
     struct stat inode;
+    set_pos(MAX+2,0);
+    cout<<cur_direc;
     set_pos(MAX+3,0);
     cout<<"Currently in Normal Mode  ";
     set_pos(MAX+4,0);
@@ -705,9 +706,7 @@ void normal_mode(const char* st1, vector<char*> v, int size)
         }
     }
 }
-
 //--------------------------------------- Command Mode ---------------------------------------\]
-
 void function_call(string call, int n)
 {
     if(call == "goto")
@@ -807,6 +806,8 @@ void command_mode(const char* st1, vector<char*> v, int size)
     commandMode = 1;
     int n=(size<v.size())?size+1:v.size()+1;
     int y=0, z=16, i;
+    set_pos(MAX+2,0);
+    cout<<cur_direc;
     set_pos(MAX+3,0);
         cout<<"Currently in Command Mode";
     set_pos(MAX+4,0);
@@ -846,9 +847,7 @@ void command_mode(const char* st1, vector<char*> v, int size)
     }
     return;
 }
-
 //-------------------------------- Used for printing each row --------------------------------\]
-
 bool strcmpr(char* c1, char* c2)
 {
     return (strcmp(c1,c2)<0);
@@ -909,9 +908,7 @@ void printdata(const char *st1, const char *st2)
     
     return;
 }
-
 //------------------------ Used for listing down the files and directories -------------------\]
-
 void listfiles(const char *dir, int size)
 {
     if(char_to_string(dir) == "") 
@@ -959,9 +956,7 @@ void listfiles(const char *dir, int size)
 
     return;
 }
-
 //--------------------------------------- Main Function --------------------------------------\]
-
 int main(int argc, char* argv[])
 {
     struct winsize ro;
