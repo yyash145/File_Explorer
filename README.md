@@ -74,4 +74,4 @@ Normal mode is the default mode of your application. It has the following functi
 
 ## How to Run:
 - Enter g++ main.cpp on Terminal
-- Then, ./a.out 
+- Then run ./a.out 
