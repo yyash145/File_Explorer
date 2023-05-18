@@ -75,3 +75,29 @@ Normal mode is the default mode of your application. It has the following functi
 ## How to Run:
 - Enter g++ main.cpp on Terminal
 - Then run ./a.out 
+
+## Explaination
+- First of all, we find the current working directory and enable canonical mode, i.e., a read request will not return until an entire line has been typed or a signal has been received.
+- Then, we list data of the top 15 files and directories in that directory(using struct dirent).
+- Data includes, File name, File Size, Ownership, Permissions(using struct stat) and Modification Date.
+
+- In Normal Mode, we use the ASCII value of UP and DOWN keys to move the pointer while LEFT and RIGHT keys to traverse, i.e., fo back and go forward respectively(using stack).
+- Enter key is either used to open a file or go through a directory and backspace key is used to go one level up.
+- h button is used to go to home directory and q is used for exit.
+- If we want to go through Command mode, we type colon ":".
+
+- In command mode, we are still in canonical mode, but can give any command we want by simply typing that command.
+- If our command is "esc", then we will be in Normal Mode, if it is "quit", then we will exit while "enter" will follow our command while "backspace" will remove the last character.
+- For copy, we make the destination directory, if it doesn't exist, than make a file an copy all the content in it character by character.
+- For move, we just rename the file wrt source and destination address.
+- For rename, we use inbuilt rename function, which renames the file on its own.
+- For creating file, we simply use creat function, which is similar to "touch" in LINUX but giving read and write to owner and no permission to groups and others.
+- For creating folder, we use mkdir function with read, write, and execute permissions for the owner of the directory, and read and execute permissions for groups and others.
+- For delete files, we use remove function to delete the argumented file.
+- For deleting directory, we recursively delete all the files and content within it.
+- For goto, we simply change the path and list all the files to that corrosponding path.
+- For search, we recursively compare the files or directory under the current directory and returns True/False.
+
+- struct "dirent" is a structure defined in the C standard library that represents a directory entry. It typically contains information about a file or directory within a directory, such as its name and file type.
+- struct "stat" is a structure defined in the C standard library that is used to store information about a file. It typically contains various fields that provide details such as file size, file permissions, file type, timestamps, and other attributes associated with the file.
+
