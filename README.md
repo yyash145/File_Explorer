@@ -9,8 +9,8 @@
 Normal mode is the default mode of your application. It has the following functionalities -
 1. Display a list of directories and files in the current folder
 - a. Every file in the directory should be displayed on a new line with the following attributes for each file -
- - - i. File Name
- - ii. File Size
+  - i. File Name
+  - ii. File Size
  - iii. Ownership (user and group) and Permissions
  - iv. Last modified
 - b. The file explorer shows the entries “.” and “..” for current and parent directory respectively
