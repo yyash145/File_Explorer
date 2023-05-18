@@ -73,5 +73,5 @@ Normal mode is the default mode of your application. It has the following functi
   - Note: In absolute path whole path will be given where as in relative path, path from root folder will be given.
 
 ## How to Run:
-Enter g++ main.cpp on Terminal
-Then ./a.out 
+- Enter g++ main.cpp on Terminal
+- Then, ./a.out 
