@@ -11,8 +11,8 @@ Normal mode is the default mode of your application. It has the following functi
 - a. Every file in the directory should be displayed on a new line with the following attributes for each file -
   - i. File Name
   - ii. File Size
- - iii. Ownership (user and group) and Permissions
- - iv. Last modified
+  - iii. Ownership (user and group) and Permissions
+  - iv. Last modified
 - b. The file explorer shows the entries “.” and “..” for current and parent directory respectively
 - c. The file explorer handle scrolling using the up and down arrow keys.
 - d. User is able to navigate up and down in the file list using the corresponding up and down arrow keys.
@@ -29,40 +29,30 @@ Normal mode is the default mode of your application. It has the following functi
 
 ### Command Mode:
 The application should enter the Command button whenever “:” (colon) key is pressed. In the command mode, the user should be able to enter different commands. All commands appear in the status bar at the bottom.
-- 1. Copy –
-‘$ copy <source_file(s)> <destination_directory>’
-- Move –
-‘$ move <source_file(s)> <destination_directory>’
-- Rename –
-‘$ rename <old_filename> <new_filename>’
- - a. Eg–
-‘$ copy foo.txt bar.txt baz.mp4 ~/foobar move foo.txt bar.txt baz.mp4 ~/foobar rename foo.txt bar.txt’
-        
- - b. Assume that the destination directory exists, and you have write permissions.
- - c. Copying/Moving directories should also be implemented
- - d. The file ownership and permissions should remain intact
+1.
+  - Copy - ‘$ copy <source_file(s)> <destination_directory>’
+  - Move – ‘$ move <source_file(s)> <destination_directory>’
+  - Rename – ‘$ rename <old_filename> <new_filename>’
+    - a. Eg - ‘$ copy foo.txt bar.txt baz.mp4 ~/foobar move foo.txt bar.txt baz.mp4 ~/foobar rename foo.txt bar.txt’
+    - b. Assume that the destination directory exists, and you have write permissions.
+    - c. Copying/Moving directories should also be implemented
+    - d. The file ownership and permissions should remain intact
 2. 
-- Create File –
-‘$ create_file <file_name> <destination_path>’
-- Create Directory –
-‘$ create_dir <dir_name> <destination_path>’
-  a. Eg – ‘$ create_file foo.txt ~/foobar ‘$ create_dir foo ~/foobar’
+ - Create File – ‘$ create_file <file_name> <destination_path>’
+ - Create Directory – ‘$ create_dir <dir_name> <destination_path>’
+  - a. Eg – ‘$ create_file foo.txt ~/foobar ‘$ create_dir foo ~/foobar’
 3. 
-- Delete File –
-‘$ delete_file <file_path>’
-- Delete Directory –
-‘$ delete_dir <dir_path>’
-- create_file foo.txt’.
- - a. On deleting directory, you must recursively delete all content present inside it .
-4. Goto –
-‘$ goto <location>’
- - a. Eg – ‘$ goto <directory_path>’
-5. Search –
-- ‘$ search <file_name>’
-or
+- Delete File – ‘$ delete_file <file_path>’
+- Delete Directory – ‘$ delete_dir <dir_path>’
+- Create_file foo.txt’.
+  - On deleting directory, you must recursively delete all content present inside it .
+4. Goto – ‘$ goto <location>’
+  - Eg – ‘$ goto <directory_path>’
+5. Search - ‘$ search <file_name>’
+             or
 - ‘$ search <directory_name>’
- - a. Search for a given file or folder under the current directory recursively.
- - b. Output should be True or False depending on whether the file or folder exists
+  - a. Search for a given file or folder under the current directory recursively.
+  - b. Output should be True or False depending on whether the file or folder exists
 6. On pressing ESC key, the application should go back to Normal Mode
 7. On pressing q key in normal mode, the application should close. Similarly, entering the ‘quit’ command in command mode should also close the application.
  
